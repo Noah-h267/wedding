@@ -1,8 +1,29 @@
 <!DOCTYPE html>
 <html>
-<body style="margin:0">
-<video autoplay muted playsinline controls width="100%" onclick="this.muted=false">
-  <source src="wedding.mp4" type="video/mp4">
-</video>
+<body style="margin:0; background:black;">
+  <video id="v" autoplay muted playsinline loop width="100%">
+    <source src="wedding.mp4" type="video/mp4">
+  </video>
+
+  <button onclick="unmute()" style="
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:28px;
+    padding:18px 28px;
+    z-index:10;">
+    🔊 Tap for sound
+  </button>
+
+  <script>
+    function unmute() {
+      const v = document.getElementById("v");
+      v.muted = false;
+      v.volume = 1;
+      v.play();
+      document.querySelector("button").style.display = "none";
+    }
+  </script>
 </body>
 </html>
